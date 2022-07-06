@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProductosRequest;
 use App\Http\Requests\UpdateProductosRequest;
 use Illuminate\Http\Request;
 use App\Models\Productos;
+use App\Models\Provedor;
 
 class ProductosController extends Controller
 {
@@ -20,6 +21,7 @@ class ProductosController extends Controller
         $productos = new Productos();
         $productos->nombre = $request->nombre;
         $productos->precio = $request->precio;
+        $productos->provedor=$request->provedor;
         $productos->save();
         return "SE HA AGREGADO";
     }
@@ -29,6 +31,7 @@ class ProductosController extends Controller
         $productos = Productos::findOrFail($request->id);
         $productos->nombre = $request->nombre;
         $productos->precio = $request->precio;
+        $productos->provedor=$request->provedor;
         $productos->save();
         return "SE HA MODIFICADO";
     }
@@ -38,4 +41,5 @@ class ProductosController extends Controller
         $product = Productos::destroy($id);
         return "SE HA ELIMINADO";
     }
+
 }

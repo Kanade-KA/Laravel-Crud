@@ -119,3 +119,6 @@ En este proyecto se tienen 2 tablas, una de producto y otra de proveedor a conti
 ![Screenshot](./images/eliminaprovedor.jpg)
 * Resultado final
 ![Screenshot](./images/finalprovedor.jpg)
+
+## Relacion Proveedor y Producto
+![Screenshot](./images/relacion.jpg)

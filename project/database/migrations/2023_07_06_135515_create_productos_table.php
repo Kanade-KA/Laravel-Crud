@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('productos', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->unsignedInteger('provedor');
+            $table->foreign('provedor')->references('id')->on('provedors');
             $table->string('nombre');
             $table->string('precio');
             $table->timestamps();

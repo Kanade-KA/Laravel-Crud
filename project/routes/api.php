@@ -31,4 +31,5 @@ Route::controller(ProvedorController::class)->group(function (){
     Route::post('/provedor', 'store');
     Route::put('/provedor/{id}', 'update');
     Route::delete('/provedor/{id}', 'destroy');
+    Route::get('/relations', 'relation');
 });

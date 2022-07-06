@@ -9,5 +9,5 @@ class Productos extends Model
 {
     use HasFactory;
     //QUE CAMPOS SERÁN LLENADOS
-    protected $fillable = ['nombre', 'precio'];
+    protected $fillable = ['nombre', 'precio', 'provedor'];
 }

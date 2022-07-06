@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProvedorRequest;
 use App\Http\Requests\UpdateProvedorRequest;
+use App\Http\Requests\StoreProductosRequest;
+use App\Http\Requests\UpdateProductosRequest;
 use Illuminate\Http\Request;
 use App\Models\Provedor;
+use App\Models\Productos;
 
 class ProvedorController extends Controller
 {
@@ -36,5 +39,19 @@ class ProvedorController extends Controller
         $provedor = Provedor::destroy($id);
         return $provedor;
         return "SE HA ELIMINADO";
+    }
+
+    public function relation(){
+        $provedor  = Provedor::all();
+        $data="";
+        foreach ($provedor as $value)
+        {
+            $data.=$value->nombre."\n";
+            $id = $value->id;
+            $producto = Productos::select('nombre')
+            ->whereprovedor($id)->get();
+            $data.=$producto."\n";
+        }
+        return $data;
     }
 }
