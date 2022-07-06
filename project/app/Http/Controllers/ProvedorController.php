@@ -2,34 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Requests;
+use App\Http\Requests\StoreProvedorRequest;
+use App\Http\Requests\UpdateProvedorRequest;
+use Illuminate\Http\Request;
 use App\Models\Provedor;
 
 class ProvedorController extends Controller
 {
     public function index()
     {
-        $prov = Provedor::all();
-        return $prov;
+        $provedor = Provedor::all();
+        return $provedor;
     }
 
     public function store(Request $request)
     {
-        $prov = new Provedor();
-        $prov->nombre = $request->nombre;
-        $prov->save();
+        $provedor = new Provedor();
+        $provedor->nombre = $request->nombre;
+        $provedor->save();
+        return "SE HA AGREGADO";
     }
 
     public function update(Request $request, $id)
     {
-        $prov = Provedor::findeOrFail($request->$id);
-        $prov->nombre = $request->nombre;
-        $prov->save();
+        $provedor = Provedor::findOrFail($request->id);
+        $provedor->nombre = $request->nombre;
+        $provedor->save();
+        return "SE HA MODIFICADO";
     }
 
     public function destroy($id)
     {
-        $$prov = Provedor::destroy($id);
-        return $prov;
+        $provedor = Provedor::destroy($id);
+        return $provedor;
+        return "SE HA ELIMINADO";
     }
 }

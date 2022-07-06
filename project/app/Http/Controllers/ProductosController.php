@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Requests;
+use App\Http\Requests\StoreProductosRequest;
+use App\Http\Requests\UpdateProductosRequest;
+use Illuminate\Http\Request;
 use App\Models\Productos;
 
 class ProductosController extends Controller
@@ -19,19 +21,21 @@ class ProductosController extends Controller
         $productos->nombre = $request->nombre;
         $productos->precio = $request->precio;
         $productos->save();
+        return "SE HA AGREGADO";
     }
 
     public function update(Request $request, $id)
     {
-        $productos = Productos::findeOrFail($request->$id);
+        $productos = Productos::findOrFail($request->id);
         $productos->nombre = $request->nombre;
         $productos->precio = $request->precio;
         $productos->save();
+        return "SE HA MODIFICADO";
     }
 
     public function destroy($id)
     {
-        $product = Product::destroy($id);
-        return $product;
+        $product = Productos::destroy($id);
+        return "SE HA ELIMINADO";
     }
 }
